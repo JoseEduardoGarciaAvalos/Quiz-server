@@ -3,6 +3,7 @@ require('dotenv').config();
 var express = require('express');
 var mongoose = require('mongoose');
 var preguntaAPIRouter = require('./routes/pregunta.route');
+var opcionAPIRouter = require('./routes/opcion.route');
 
 // Conexión de la Base de Datos
 var mongoDB = process.env.MONGO_URI;
@@ -14,4 +15,5 @@ db.on('error', console.error.bind(console, 'MongoDB conexión error: '));
 
 var app = express();
 app.use('/api/pregunta', preguntaAPIRouter);
+app.use('/api/opcion', opcionAPIRouter);
 app.listen(3000);
