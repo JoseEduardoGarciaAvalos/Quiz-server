@@ -13,7 +13,10 @@ mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB conexión error: '));
 
+// Rutas
 var app = express();
+// define the first route
+app.get("/", function (req, res) { res.send("<h1>Hola mundo</h1>")})
 app.use('/api/pregunta', preguntaAPIRouter);
 app.use('/api/opcion', opcionAPIRouter);
-app.listen(3000);
+app.listen(process.env.PORT || 3000, () => console.log("Servidor corriedno...")); // Qué puerto utilizará Heroku, o el valor predeterminado es 3000
