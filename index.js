@@ -2,6 +2,8 @@
 require('dotenv').config();
 var express = require('express');
 var mongoose = require('mongoose');
+const cors = require('cors');
+//  Definición de subrutas
 var preguntaAPIRouter = require('./routes/pregunta.route');
 var opcionAPIRouter = require('./routes/opcion.route');
 
@@ -13,9 +15,11 @@ mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB conexión error: '));
 
-// Rutas
 var app = express();
-// define the first route
+// Configuración de CORS
+app.use(cors());
+
+// Rutas. define the first route
 app.get("/", function (req, res) { res.send("<h1>Hola mundo</h1>")})
 app.use('/api/pregunta', preguntaAPIRouter);
 app.use('/api/opcion', opcionAPIRouter);
