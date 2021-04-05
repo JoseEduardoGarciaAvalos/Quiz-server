@@ -23,4 +23,4 @@ app.use(cors());
 app.get("/", function (req, res) { res.send("<h1>Hola mundo</h1>")})
 app.use('/api/pregunta', preguntaAPIRouter);
 app.use('/api/opcion', opcionAPIRouter);
-app.listen(process.env.PORT || 3000, () => console.log("Servidor corriedno...")); // Qué puerto utilizará Heroku, o el valor predeterminado es 3000
+app.listen(process.env.PORT || 3000, () => console.log("Servidor corriendo...")); // Qué puerto utilizará Heroku, o el valor predeterminado es 3000
