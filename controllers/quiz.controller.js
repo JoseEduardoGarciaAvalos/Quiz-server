@@ -9,13 +9,19 @@ exports.getQuizes = function (req, res) {
 }
 
 exports.createQuiz = function (req, res) {
-    var quiz = new Quiz({ 
-        code: req.body.code,
-        titulo: req.body.titulo,
-        descripcion: req.body.descripcion,
-        coverURL: req.body.coverURL
-     });
-     Quiz.add(quiz, (err, newQuiz) => {
+    let requestData = req.body
+    if (!Array.isArray(req.body)) requestData = [req.body]
+
+    let quizes = requestData.map( (data) => {
+        return new Quiz({ 
+            code: data.code,
+            titulo: data.titulo,
+            descripcion: data.descripcion,
+            coverURL: data.coverURL
+         });
+    })
+    
+    Quiz.add(quizes, (err, newQuiz) => {
         res.status(200).json(
             newQuiz
         );
