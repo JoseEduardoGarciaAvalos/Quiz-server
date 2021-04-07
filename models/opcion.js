@@ -24,7 +24,7 @@ OpcionSchema.statics.get = function (cb) {
 };
 
 OpcionSchema.statics.findByPregunta = function (code, cb) {
-    return this.find({ codePregunta: code}, cb);
+    return this.find({ codePregunta: code}, cb).sort( { "code": 1 } );
 };
 
 OpcionSchema.statics.add = function (aOpcion, cb) {
