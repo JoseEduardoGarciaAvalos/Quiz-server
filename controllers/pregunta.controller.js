@@ -16,3 +16,22 @@ exports.getPreguntasByCodePregunta = function (req, res) {
         );
     });
 }
+
+exports.createPregunta = function (req, res ) {
+    let requestData = req.body
+    if (!Array.isArray(req.body)) requestData = [req.body]
+
+    let preguntas = requestData.map( (data) => {
+        return new Pregunta({ 
+            code: data.code,
+            texto: data.texto,
+            codeQuiz: data.codeQuiz,
+         });
+    })
+    
+    Pregunta.add(preguntas, (err, nuevaPregunta) => {
+        res.status(200).json(
+            nuevaPregunta
+        );
+    });
+}

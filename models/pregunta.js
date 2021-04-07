@@ -23,5 +23,9 @@ PreguntaSchema.statics.findByCodePregunta = function (codeQuiz, cb) {
     return this.find({ codeQuiz }, cb);
 };
 
+PreguntaSchema.statics.add = function (aPregunta, cb) {
+    return this.create(aPregunta, cb);
+  };
+
 // Las collecciones deben estar en plural
 module.exports = mongoose.model('Pregunta', PreguntaSchema);
