@@ -27,4 +27,8 @@ OpcionSchema.statics.findByPregunta = function (code, cb) {
     return this.find({ codePregunta: code}, cb);
 };
 
+OpcionSchema.statics.add = function (aOpcion, cb) {
+    return this.create(aOpcion, cb);
+};
+
 module.exports = mongoose.model('Opciones', OpcionSchema);
